@@ -1,0 +1,26 @@
+-- Warehouse
+CREATE WAREHOUSE IF NOT EXISTS dbt_wh
+  WITH WAREHOUSE_SIZE = 'XSMALL'
+  AUTO_SUSPEND = 60
+  AUTO_RESUME = TRUE;
+
+-- Database & Schema
+CREATE DATABASE IF NOT EXISTS olist_db;
+CREATE SCHEMA IF NOT EXISTS olist_db.raw;
+
+-- Role & Permissions
+CREATE ROLE IF NOT EXISTS dbt_role;
+
+GRANT USAGE ON WAREHOUSE dbt_wh TO ROLE dbt_role;
+GRANT USAGE ON DATABASE olist_db TO ROLE dbt_role;
+GRANT USAGE, CREATE TABLE ON SCHEMA olist_db.raw TO ROLE dbt_role;
+
+-- File Format
+CREATE OR REPLACE FILE FORMAT olist_db.raw.csv_format
+TYPE = 'CSV'
+FIELD_DELIMITER = ','
+FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+SKIP_HEADER = 1;
+
+-- Stage
+CREATE OR REPLACE STAGE olist_db.raw.olist_stage;

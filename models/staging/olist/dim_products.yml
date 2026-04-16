@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: "Cleaned products data with null values"
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+          - unique
+
+      - name: product_category_name
+
+      - name: product_name_length
+
+      - name: product_description_length
+      
+      - name: product_photos_qty
+
+      - name: product_weight_g
+      
+      - name: product_length_cm
+
+      - name: product_height_cm
+      
+      - name: product_width_cm

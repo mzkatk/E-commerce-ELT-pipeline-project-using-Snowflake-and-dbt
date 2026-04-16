@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "Order-level fact table with aggregated metrics"
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        tests:
+          - not_null
+
+      - name: total_items
+        tests:
+          - not_null
+
+      - name: total_order_value
+        tests:
+          - not_null
+
+      - name: delivery_days
+        tests: []

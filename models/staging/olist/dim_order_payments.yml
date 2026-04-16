@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: dim_order_payments
+    description: "Cleaned order payments data"
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+
+      - name: payment_sequential
+        tests:
+          - not_null
+
+      - name: payment_type
+        tests:
+          - not_null
+
+      - name: payment_installments
+        tests:
+          - not_null
+      
+      - name: payment_value
+        tests:
+          - not_null
